@@ -1,0 +1,53 @@
+name: Setup PHP & Composer
+description: Setup and initialize some libraries and dependencies to our application
+author: André Paul Grandsire
+branding:
+  icon: settings
+  color: purple
+inputs:
+  in-production:
+    required: true
+    default: '1'
+    description: |
+      Defines dependency's environment to install libraries
+      [ 0 - development / 1 - production / default: 1 ]
+
+  php-version:
+    default: '8.2'
+    description: Defines which version of PHP uses with shivammathur/setup-php
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PHP environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{  inputs.php-version }}
+        extensions: |
+          bcmath, curl, dom, exif, gd, iconv,imagick,
+          intl, libxml, mbstring, mysql, mysqli, pcntl,
+          pdo, pdo_mysql, pdo_sqlite,soap, sqlite, zip
+        coverage: xdebug
+
+    - name: Setup Cache settings and files
+      id: cache-composer
+      uses: actions/cache@v4
+      with:
+        path: vendor
+        key: composer-php-${{ hashFiles('**/composer.json') }}
+        restore-keys: |
+          composer-php-
+          composer-
+
+    - name: Setup Composer environment
+      shell: bash
+      env:
+        # Define if we're running composer in production or development
+        # @see https://getcomposer.org/doc/03-cli.md#composer-no-dev
+        COMPOSER_NO_DEV: ${{ inputs.in-production }}
+      run: composer install --prefer-dist --no-progress
+
+    - name: Setup application settings to build
+      shell: bash
+      run: |
+        php -r "file_exists('.env') || copy('.env.ci', '.env');"
+        php artisan key:generate
