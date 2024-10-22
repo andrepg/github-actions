@@ -1,0 +1,28 @@
+name: Deploy applications via RSync
+description: Deploy a Laravel project with all files required to run a backend-only instance
+author: André Paul Grandsire
+inputs:
+  local-path:
+    required: true
+    description: Define the local path used to sync
+  remote-server:
+    required: true
+    description: Define the remote server to deploy application
+  remote-path:
+    required: true
+    description: Path where our app is located, related to filesystem
+  remote-username:
+    required: true
+    description: Defines username to connect to remote server
+runs:
+  using: "composite"
+  steps:
+    - name: Run deploy
+      shell: bash
+      run: |
+        sh ${{ github.action_path }}/deploy-files.sh \
+          ${{ inputs.local-path }} \
+          ${{ inputs.remote-username }} \
+          ${{ inputs.remote-server }} \
+          "${{ inputs.remote-path }}" 
+          "${{ inputs.custom-exclude }}"
