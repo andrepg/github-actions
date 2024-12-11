@@ -32,5 +32,5 @@ runs:
           ${{ inputs.remote-server }} \
           "${{ inputs.remote-path }}" 
           "${{ inputs.custom-exclude }}" \
-          ${{ inputs.verbose ? '--verbose' : '' }}
+          ${{ inputs.verbose }}
           
