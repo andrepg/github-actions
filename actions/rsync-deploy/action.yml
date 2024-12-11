@@ -17,6 +17,9 @@ inputs:
   custom-exclude: 
     required: false
     description: Custom Rsync exclude rules (with single commas)
+  verbose:
+    default: false
+    description: Enable RSync verbose mode
 runs:
   using: "composite"
   steps:
@@ -28,4 +31,6 @@ runs:
           ${{ inputs.remote-username }} \
           ${{ inputs.remote-server }} \
           "${{ inputs.remote-path }}" 
-          "${{ inputs.custom-exclude }}"
+          "${{ inputs.custom-exclude }}" \
+          ${{ inputs.verbose ? '--verbose' : '' }}
+          
