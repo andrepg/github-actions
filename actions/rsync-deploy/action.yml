@@ -14,12 +14,7 @@ inputs:
   remote-username:
     required: true
     description: Defines username to connect to remote server
-  custom-exclude: 
-    required: false
-    description: Custom Rsync exclude rules (with single commas)
-  verbose:
-    default: false
-    description: Enable RSync verbose mode
+
 runs:
   using: "composite"
   steps:
@@ -30,7 +25,5 @@ runs:
           ${{ inputs.local-path }} \
           ${{ inputs.remote-username }} \
           ${{ inputs.remote-server }} \
-          "${{ inputs.remote-path }}" 
-          "${{ inputs.custom-exclude }}" \
-          ${{ inputs.verbose }}
+          "${{ inputs.remote-path }}"
           
