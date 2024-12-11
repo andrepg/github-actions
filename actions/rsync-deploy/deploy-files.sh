@@ -22,6 +22,7 @@ rsync --recursive --fuzzy --compress --human-readable --mkpath \
 	--exclude='*.config.js' \
 	--exclude='*.md' \
 	--exclude='tsconfig.json' \
+ 	--verbose \
 	$LOCAL_PATH \
 	-e "ssh -i ~/.ssh/id" \
 	$REMOTE_USER@$REMOTE_SERVER:$REMOTE_PATH
