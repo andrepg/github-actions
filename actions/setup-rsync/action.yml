@@ -5,6 +5,9 @@ inputs:
   ssh-key:
     required: true
     description: SSH Key used to authorize user at remote server
+  remote-server:
+    required: true
+    description: Remote server to check SSH key against and allow to SSH
 runs:
   using: "composite"
   steps:
