@@ -9,11 +9,10 @@ CUSTOM_EXCLUDE=$5  # Custom exclude patterns args
 rsync --recursive --fuzzy --compress --human-readable --mkpath \
 	--exclude='**/.git*/**' \
 	--exclude='**/.vscode/**' \
-	--exclude='./docker' \
-	--exclude='./node_modules' \
-	--exclude='./tests' \
+	--exclude='**/docker' \
+	--exclude='**/node_modules' \
+	--exclude='**/tests' \
 	--exclude='./vendor' \
-	--exclude='.env' \
 	--exclude='.env.**' \
 	--exclude='.git**' \
 	--exclude='docker-compose.yml' \
