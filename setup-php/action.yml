@@ -5,6 +5,13 @@ branding:
   icon: settings
   color: purple
 inputs:
+  copy-env:
+    required: false
+    default: true
+    description: |
+      Compatibility variable to copy .env files. This variable will be removed
+      once we migrate all of our actions to generate it's own .env file
+      within their workflows and jobs
   in-production:
     required: true
     default: '1'
@@ -48,6 +55,7 @@ runs:
 
     - name: Setup application settings to build
       shell: bash
+      if: ${{ inputs.copy-env }}
       run: |
         php -r "file_exists('.env') || copy('.env.ci', '.env');"
         php artisan key:generate
