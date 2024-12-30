@@ -6,7 +6,7 @@ REMOTE_SERVER=$3   # Server to connect
 REMOTE_PATH=$4     # Remote path to deploy
 CUSTOM_EXCLUDE=$5  # Custom exclude patterns args
 
-rsync  	--verbose recursive \
+rsync  	--verbose --recursive \
 	--fuzzy --checksum --delete \
 	--force --compress --human-readable --mkpath \
 	--exclude='.git**' \
