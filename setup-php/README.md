@@ -21,10 +21,24 @@ After Checkout job, you can just call this action with parameters and we'll take
 |--|--|--|
 |`in-production`| `0` to development, `1` to production|`0`|
 |`php-version`|any version supported by [shivammathur/setup-php](https://github.com/shivammathur/setup-php) action|`8.2`|
+|`copy-env`|`true` to copy, `false` to ignore|`true`|
 
 ## PHP Dependencies
 
 This action enable some extensions by default. They are the following:
-`bcmath, curl, dom, exif, gd, iconv, imagick,
-intl, libxml, mbstring, mysql, mysqli, pcntl,
-pdo, pdo_mysql, pdo_sqlite, soap, sqlite, zip`
+* `bcmath`,
+* `curl`,
+* `dom`,
+* `exif`,
+* `gd`,
+* `iconv`,
+* `imagick`,
+* `intl`,
+* `libxml`,
+* `mbstring`,
+* `mysql`, `mysqli`,
+* `pcntl`,
+* `pdo`, `pdo_mysql`, `pdo_sqlite`,
+* `soap`,
+* `sqlite`,
+* `zip`
