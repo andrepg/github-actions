@@ -21,7 +21,7 @@ rsync  	--verbose --recursive \
 	--exclude='phpunit.xml' \
 	--exclude='*.code-workspace' \
 	--exclude='*.config.js' \
-	--exclude='**/*.sqlite' \	
+	--exclude='**/*.sqlite' \
 	--exclude='**/*.md' \
 	--exclude='tsconfig.json' \
 	$LOCAL_PATH \
