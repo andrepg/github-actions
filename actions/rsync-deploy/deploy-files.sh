@@ -12,14 +12,16 @@ rsync  	--verbose --recursive \
 	--exclude='.git**' \
 	--exclude='.vscode' \
 	--exclude='docker' \
+	--exclude='storage' \
 	--exclude='node_modules' \
 	--exclude='tests' \
 	--exclude='vendor' \
 	--exclude='.env.**' \
 	--exclude='docker-compose.yml' \
-	--exclude='*.code-workspace' \
 	--exclude='phpunit.xml' \
+	--exclude='*.code-workspace' \
 	--exclude='*.config.js' \
+	--exclude='*.sqlite' \	
 	--exclude='*.md' \
 	--exclude='tsconfig.json' \
 	$LOCAL_PATH \
